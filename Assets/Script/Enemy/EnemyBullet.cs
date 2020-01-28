@@ -22,9 +22,10 @@ namespace complete {
 
         void OnCollisionEnter(Collision collision) {
             
-            Destroy(gameObject);
-            Instantiate(Effect, gameObject.transform.position, Quaternion.identity);
-            
+            //Destroy(gameObject);
+            _ObjectInfo.RemoveGameObject();
+            //Instantiate(Effect, gameObject.transform.position, Quaternion.identity);
+            ObjectPoolManager.Instance.GetGameObject("BulletBoomEffectPool", transform.position, Quaternion.identity, 1);
         }
     }
 }

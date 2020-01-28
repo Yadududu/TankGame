@@ -82,7 +82,7 @@ namespace complete {
                 CurSelect = s;
 
                 CreatePlayerMethod(PlayerPrefab,LifePoint);
-                PlayerPrefabInstantiate.GetComponent<PlayerMove>().Camera3D = ThreeDCamera;
+                //PlayerPrefabInstantiate.GetComponent<PlayerMove>().Camera3D = ThreeDCamera;
                 CreateEnemyMethod();
 
                 UIControl.SetHealthUIMaxValue(ItemData.PlayerHealthValue);
@@ -178,9 +178,9 @@ namespace complete {
         }
         void CreateEnemyMethod(){
             CreateEnemyObject1 = Instantiate(CreateEnemy, CreateEnemyPoint1.position, CreateEnemyPoint1.rotation, CreateEnemyPoint1);
-            CreateEnemyObject1.GetComponent<CreateEnemy>().SetLookAtPoint(FollowCameraPoint.gameObject);
+            //CreateEnemyObject1.GetComponent<CreateEnemy>().SetLookAtPoint(FollowCameraPoint.gameObject);
             CreateEnemyObject2 = Instantiate(CreateEnemy, CreateEnemyPoint2.position, CreateEnemyPoint2.rotation, CreateEnemyPoint2);
-            CreateEnemyObject2.GetComponent<CreateEnemy>().SetLookAtPoint(FollowCameraPoint.gameObject);
+            //CreateEnemyObject2.GetComponent<CreateEnemy>().SetLookAtPoint(FollowCameraPoint.gameObject);
         }
         void DestroyEnemyMethod(){
             if (CreateEnemyObject1 != null) {

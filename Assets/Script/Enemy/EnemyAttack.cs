@@ -37,8 +37,10 @@ namespace complete{
                         
                         if (Time.time > NextFire) {
                             NextFire = Time.time + FireRate;
-                            Instantiate(Bullet, FireTransform.transform.position, gameObject.transform.rotation);
-                            Instantiate(FireEffect, FireTransform.transform.position, Quaternion.Euler(90.0f, gameObject.transform.localEulerAngles.y, 0.0f));
+                            //Instantiate(Bullet, transform.TransformPoint(new Vector3(0, 0.57f, 1.97f)), transform.rotation);
+                            //Instantiate(FireEffect, transform.TransformPoint(new Vector3(0, 0.57f, 1.97f)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f));
+                            ObjectPoolManager.Instance.GetGameObject("BulletEnemyPool", transform.TransformPoint(new Vector3(0, 0.57f, 1.97f)), transform.rotation, 0);
+                            ObjectPoolManager.Instance.GetGameObject("FireEffectPool", transform.TransformPoint(new Vector3(0, 0.57f, 1.97f)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f), 2);
                             ActiveAudio();
                         }
                     }

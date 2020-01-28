@@ -5,19 +5,23 @@ using UnityEngine;
 public abstract class BaseBullet : MonoBehaviour {
 
 	public ItemData ItemData;
-    public GameObject Effect;
+    //public GameObject Effect;
 
-	private float BulletSpeed;
-    private float Move;
+    protected ObjectInfo _ObjectInfo;
+
+    private float _BulletSpeed;
+    private float _Move;
+    
 
 	// Use this for initialization
 	void Start () {
-		BulletSpeed = ItemData.PlayerBulletSpeed;
-        Move = BulletSpeed * Time.deltaTime;
+		_BulletSpeed = ItemData.PlayerBulletSpeed;
+        _Move = _BulletSpeed * Time.deltaTime;
+        _ObjectInfo = GetComponent<ObjectInfo>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.Translate(Vector3.forward * Move);
+		this.transform.Translate(Vector3.forward * _Move);
 	}
 }

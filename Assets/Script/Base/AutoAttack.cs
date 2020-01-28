@@ -6,10 +6,6 @@ namespace complete {
 	public abstract class AutoAttack : MonoBehaviour {
 
 		public ItemData ItemData;
-		public GameObject Bullet;
-		public GameObject FireEffect;
-		public GameObject FireTransform;
-		public AudioClip FireClip;
 
 		[HideInInspector]
 		public float FireRate;
@@ -19,7 +15,6 @@ namespace complete {
 		public abstract void AutoAttackMethod();
 
 		public void ActiveAudio(){
-			GetComponent<AudioSource>().clip = FireClip;
             GetComponent<AudioSource>().Play();
 		}
 	}

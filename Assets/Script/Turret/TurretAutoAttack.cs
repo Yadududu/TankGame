@@ -39,8 +39,9 @@ namespace complete {
                     Gun.transform.rotation = Quaternion.Euler(0f, Gun.transform.localEulerAngles.y, 0f);
                 }
 
-                Instantiate(Bullet, FireTransform.transform.position, Gun.transform.localRotation);
-                Instantiate(FireEffect, FireTransform.transform.position, Quaternion.Euler(90.0f, FireTransform.transform.eulerAngles.y, 0.0f));
+                //待修改
+                //Instantiate(Bullet, FireTransform.transform.position, Gun.transform.localRotation);
+                //Instantiate(FireEffect, FireTransform.transform.position, Quaternion.Euler(90.0f, FireTransform.transform.eulerAngles.y, 0.0f));
             }
 
         }

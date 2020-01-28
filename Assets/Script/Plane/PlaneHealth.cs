@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LMJ;
 
 namespace complete{
 	public class PlaneHealth : BaseHealth {
 
-		// public GameObject Effect;
+        // public GameObject Effect;
 
-		void Start () {
-			HealthValue = ItemData.PlaneHealthValue;
+        protected override void Start() {
+            base.Start();
+            HealthValue = ItemData.PlaneHealthValue;
 		}
 
 		void Update () {
@@ -16,8 +18,9 @@ namespace complete{
 		}
 
 		void OnCollisionEnter(){
-			GameSystem.m_UIControl.GetComponent<UIControl>().ShowGameOverUI();
-			DeadMethod();
+            //GameSystem.m_UIControl.GetComponent<UIControl>().ShowGameOverUI();
+            ScoreSystem.Get.Add(ScoreSystem.Get.score);
+            DeadMethod();
 		}
 	}
 }

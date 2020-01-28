@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LMJ;
 
 namespace complete {
     public class PlayerBullet : BaseBullet {
@@ -24,11 +25,12 @@ namespace complete {
             
             string s = collision.gameObject.tag;
             if (s == "Enemy") {
-                GameSystem.m_UIControl.GetComponent<UIControl>().AddScore();
+                ScoreSystem.Get.Gain();
             }
-            Destroy(gameObject);
-            Instantiate(Effect, gameObject.transform.position, Quaternion.identity);
-            
+            //Destroy(gameObject);
+            _ObjectInfo.RemoveGameObject();
+            //Instantiate(Effect, gameObject.transform.position, Quaternion.identity);
+            ObjectPoolManager.Instance.GetGameObject("BulletBoomEffectPool", transform.position, Quaternion.identity, 1);
         }
     }
 }

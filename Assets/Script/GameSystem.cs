@@ -24,16 +24,22 @@ namespace complete {
 
         public static GameObject m_GameControl {
             get {
-
                 return m_GameSystem.GameControl;
             }
         }
 
         public static GameObject m_UIControl {
             get {
-
                 return m_GameSystem.UIControl;
             }
+        }
+
+        public static GameObject GetGameControl() {
+            return m_GameSystem.GameControl;
+        }
+
+        public static GameObject GetUIControl() {
+            return m_GameSystem.UIControl;
         }
     }
 }

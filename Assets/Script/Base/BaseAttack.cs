@@ -4,27 +4,24 @@ using UnityEngine;
 
 namespace complete {
 	public abstract class BaseAttack : MonoBehaviour {
+        
+        private ObjectPool _BulletPool;
+        private ObjectPool _EffectPool;
+        
+        public virtual void AttackControl(bool DoubleBullet) {
+            if (DoubleBullet) {
+                ObjectPoolManager.Instance.GetGameObject("BulletPlayerPool", transform.TransformPoint(new Vector3(1.6f, 0.64f, 2)), transform.rotation, 0);
+                ObjectPoolManager.Instance.GetGameObject("FireEffectPool", transform.TransformPoint(new Vector3(1.6f, 0.64f, 2)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f), 2);
 
-		public GameObject FireTransform;
-		public GameObject FireTransform2;
-		public GameObject FireTransform3;
-		public GameObject Bullet;
-		public GameObject FireEffect;
-		public AudioClip FireClip;
-		public void AttackControl(bool DoubleBullet) {
-			if (DoubleBullet == false) {
-				Instantiate(Bullet, FireTransform.transform.position, gameObject.transform.rotation);
-				Instantiate(FireEffect, FireTransform.transform.position, Quaternion.Euler(90.0f, gameObject.transform.localEulerAngles.y, 0.0f));
-			} else {
-				Instantiate(Bullet, FireTransform2.transform.position, gameObject.transform.rotation);
-				Instantiate(FireEffect, FireTransform2.transform.position, Quaternion.Euler(90.0f, gameObject.transform.localEulerAngles.y, 0.0f));
-
-				Instantiate(Bullet, FireTransform3.transform.position, gameObject.transform.rotation);
-				Instantiate(FireEffect, FireTransform3.transform.position, Quaternion.Euler(90.0f, gameObject.transform.localEulerAngles.y, 0.0f));
-			}
+                ObjectPoolManager.Instance.GetGameObject("BulletPlayerPool", transform.TransformPoint(new Vector3(-1.6f, 0.64f, 2)), transform.rotation, 0);
+                ObjectPoolManager.Instance.GetGameObject("FireEffectPool", transform.TransformPoint(new Vector3(-1.6f, 0.64f, 2)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f), 2);
+            } else {
+                ObjectPoolManager.Instance.GetGameObject("BulletPlayerPool", transform.TransformPoint(new Vector3(0, 0.57f, 1.41f)), transform.rotation, 0);
+                ObjectPoolManager.Instance.GetGameObject("FireEffectPool", transform.TransformPoint(new Vector3(0, 0.57f, 1.41f)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f), 2);
+            }
 		}
+
 		public void ActiveAudio(){
-			GetComponent<AudioSource>().clip = FireClip;
             GetComponent<AudioSource>().Play();
 		}
 	}

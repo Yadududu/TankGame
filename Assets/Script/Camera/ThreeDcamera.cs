@@ -18,8 +18,8 @@ namespace complete {
 		void Update () {
 			if(RealTime==true){
 				if(CameraTransform!=null){
-					gameObject.transform.position = CameraTransform.transform.position;
-					gameObject.transform.rotation = CameraTransform.transform.rotation;
+					gameObject.transform.position = CameraTransform.transform.TransformPoint(new Vector3(0, 1.86f, -1.46f));
+                    gameObject.transform.rotation = CameraTransform.transform.rotation;
 				}
 			}
 			
@@ -28,7 +28,7 @@ namespace complete {
 			
 			CameraTransform = m_CameraTransform;
 			
-			gameObject.transform.position = m_CameraTransform.transform.position;
+			gameObject.transform.position = m_CameraTransform.transform.TransformPoint(new Vector3(0,1.86f,-1.46f));
 			gameObject.transform.rotation = m_CameraTransform.transform.rotation;
 		}
 

@@ -10,15 +10,14 @@ namespace complete{
 
         // private int HealthValue;
         // private float CurrentHealth;                      // 当前生命值
+        
 
-        void Start() {
+        protected override void Start() {
+            base.Start();
             HealthValue = ItemData.EnemyHealthValue;
             CurrentHealth = HealthValue;
+            
         }
-        // void Dead() {
-        //     Destroy(gameObject);
-        //     Instantiate(BoomEffect, gameObject.transform.position - new Vector3(0f, 1.4f, 0f), Quaternion.identity);
-        // }
 
         void OnCollisionEnter(Collision collision) {
             string s = collision.gameObject.tag;
@@ -29,8 +28,10 @@ namespace complete{
                 }
             }
         }
-
-        
+        //public override void DeadMethod() {
+        //    base.DeadMethod();
+        //    _ObjectInfo.RemoveGameObject();
+        //}
     }
 }
 
