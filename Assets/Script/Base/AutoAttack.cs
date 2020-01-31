@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace complete {
-	public abstract class AutoAttack : MonoBehaviour {
+	public class AutoAttack : MonoBehaviour {
 
-		public ItemData ItemData;
+		public SystemData systemData;
+        
+		protected float _FireRate;
+        protected float _NextFire;
+        
+        protected virtual void AutoAttackMethod() {
 
-		[HideInInspector]
-		public float FireRate;
-		[HideInInspector]
-		public float NextFire = 0.0F;
+        }
 
-		public abstract void AutoAttackMethod();
-
-		public void ActiveAudio(){
+		protected void ActiveAudio(){
             GetComponent<AudioSource>().Play();
 		}
 	}

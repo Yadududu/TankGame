@@ -4,42 +4,18 @@ using UnityEngine;
 
 namespace complete {
 	public class TurretMove : BaseMove {
-
-		public GameObject Camera3D;
-		public GameObject Camera3DTransform;
-
-		private Vector3 Vector3;
-
-		// Use this for initialization
-		void Start () {
-			Speed = ItemData.TurretSpeed;
-
-			// Camera3D.GetComponent<Tank3Dcamera>().SetCameraTransform(Camera3DTransform);
-			// Camera3D.GetComponent<Tank3Dcamera>().RealTime = false;
-			// Camera3D.GetComponent<AudioListener>().enabled = true;
-            // Camera3D.GetComponent<Camera>().enabled = true;
-			//GameSystem.m_GameControl.GetComponent<GameControl>().Set3DCamera(true ,false ,Camera3DTransform);
-            //GameSystem.m_GameControl.GetComponent<GameControl>().SetMainCamera(false);
-
+        
+		protected override void Start () {
+			Speed = systemData.turretSpeed;
 		}
-		
-		// Update is called once per frame
-		void Update () {
+		protected override void Update () {
 			MoveMethod();
 		}
 
-		public override void MoveMethod(){
+		protected override void MoveMethod(){
 			
-
 			float mouseX = Input.GetAxis("Mouse X") * Speed;
 			float mouseY = Input.GetAxis("Mouse Y") * Speed;
-	
-			// Debug.Log("mouseX"+mouseX);
-			// Debug.Log("mouseY"+mouseY);
-
-			// Camera3D.transform.rotation = Camera3D.transform.rotation * Quaternion.Euler(0, mouseX, 0);
-			// Camera3D.transform.rotation = Camera3D.transform.rotation * Quaternion.Euler(-mouseY, 0, 0);
-			// Camera3D.transform.eulerAngles=(-mouseY, mouseX, 0);s
 			
 			//要么上下观察，要么左右观察
 			if (Mathf.Abs(mouseX) > Mathf.Abs(mouseY)){
@@ -56,11 +32,7 @@ namespace complete {
                     Camera.main.transform.rotation = Quaternion.Euler(new Vector3(45, Camera.main.transform.eulerAngles.y,0));
 				}
 			}
-            	
-
-			
 		}
-
 	}
 }
 

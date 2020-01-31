@@ -5,13 +5,11 @@ using UnityEngine;
 namespace complete {
     public class TurretAttack : BaseAttack {
 
-        public override void AttackControl(bool DoubleBullet) {
+        protected override void AttackControl(bool doubleBullet) {
             ObjectPoolManager.Instance.GetGameObject("BulletPlayerPool", transform.TransformPoint(new Vector3(0, 1.88f, 2.96f)), transform.rotation, 0);
             ObjectPoolManager.Instance.GetGameObject("FireEffectPool", transform.TransformPoint(new Vector3(0, 1.88f, 2.96f)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f), 2);
         }
-
-        // Update is called once per frame
-        void Update() {
+        protected override void Update() {
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 AttackControl(false);
                 ActiveAudio();
@@ -19,5 +17,4 @@ namespace complete {
         }
 
     }
-
 }

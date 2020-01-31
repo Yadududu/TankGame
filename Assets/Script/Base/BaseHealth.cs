@@ -4,35 +4,34 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace complete{
-	public abstract class BaseHealth : MonoBehaviour {
-		public ItemData ItemData;
-        //public GameObject BoomEffect;
+	public class BaseHealth : MonoBehaviour {
+
+        public SystemData systemData;
         public UnityEvent onDead;
 
-        [HideInInspector]
-		public float HealthValue;
-		[HideInInspector]
-		public float CurrentHealth;  		// 当前生命值
-
+        protected int _HealthValue = 1;       // 预设生命值
+        protected float _CurrentHealth;  		// 当前生命值
         protected ObjectInfo _ObjectInfo;
 
         protected virtual void Start() {
+            _CurrentHealth = _HealthValue;
             _ObjectInfo = GetComponent<ObjectInfo>();
         }
 
-        public void SubHealthValue() {
-			CurrentHealth -= 1;
+        protected void SubHealthValue() {
+			_CurrentHealth -= 1;
 		}
-		public void AddHealthValue() {
-			CurrentHealth += 1;
+		protected void AddHealthValue() {
+			_CurrentHealth += 1;
 		}
-		public float GetHealthValue() {
-			return CurrentHealth;
-		}
-
-		public virtual void DeadMethod() {
-			//Destroy(gameObject);
-            //Instantiate(BoomEffect, gameObject.transform.position - new Vector3(0f, 1.4f, 0f), Quaternion.identity);
+        protected virtual void OnCollisionEnter(Collision collision) {
+            string s = collision.gameObject.tag;
+            if (s == "EnemyBullet") {
+                SubHealthValue();
+                if (_CurrentHealth <= 0) DeadMethod();
+            }
+        }
+        public virtual void DeadMethod() {
             ObjectPoolManager.Instance.GetGameObject("ObjBoomEffectPool", gameObject.transform.position - new Vector3(0f, 1.4f, 0f), Quaternion.identity, 1);
             _ObjectInfo.RemoveGameObject();
             onDead.Invoke();

@@ -4,41 +4,28 @@ using UnityEngine;
 
 namespace complete {
     public class EnemyMove : BaseMove {
-
-        // public ItemData ItemData;
-        // private float Speed;
-        private bool IsTurn = false;
-
-        void Update() {
-            Speed = ItemData.EnemyMoveSpeed;
+        
+        protected override void Start() {
+            Speed = systemData.enemyMoveSpeed;
+        }
+        protected override void Update() {
             MoveMethod();
         }
-
-        public override void MoveMethod(){
-            gameObject.transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        protected override void MoveMethod() {
+            transform.Translate(Vector3.forward * Speed * Time.deltaTime);
         }
-
-        void OnCollisionEnter() {
-            IsTurn = true;
+        private void OnCollisionEnter() {
             Turn();
         }
-        void OnCollisionExit() {
-            IsTurn = false;
-        }
-
-        void Turn() {
-            Vector3 playerRotation = gameObject.transform.localEulerAngles;
-            int num;
-            while (true) {
-                num = Random.Range(1, 5);
-                num = num * 90;
-                if (playerRotation.y != num) {
-                    break;
-                }
+        private void Turn() {
+            int num = Random.Range(1, 5);
+            num = num * 90;
+            if (num == transform.localEulerAngles.y) {
+                Turn();
+                return;
             }
-            gameObject.transform.localEulerAngles = new Vector3(0.0f, num, 0.0f);
+            transform.localEulerAngles = new Vector3(0.0f, num, 0.0f);
         }
-        
     }
 }
 

@@ -4,55 +4,38 @@ using UnityEngine;
 
 namespace complete {
     public class TurretAutoAttack : AutoAttack {
+        
+        public GameObject gun;
+        
+        private Vector3 _Target;
 
-        // public ItemData ItemData;
-        // public GameObject Bullet;
-        // public GameObject FireEffect;
-        // public GameObject FireTransform;
-        public GameObject Gun;
-
-        // private float FireRate;
-        // private float NextFire = 0.0F;
-        private Vector3 Target;
-        private GameObject Tar;
-
-        void Start() {
-            //EnemyTankCollider = GetComponent<CapsuleCollider>();
-            FireRate = ItemData.TurretFireRate;
+        private void Start() {
+            _FireRate = systemData.turretFireRate;
         }
-
-        void Update() {
-            //transform.Rotate(Vector3.up * Time.deltaTime * 1);
+        private void OnTriggerStay(Collider collider) {
+            if (collider.gameObject.tag == "Enemy") {
+                _Target = collider.transform.position;
+                AutoAttackMethod();
+            }
         }
+        protected override void AutoAttackMethod() {
+            if (Time.time > _NextFire) {
+                _NextFire = Time.time + _FireRate;
 
-        public override void AutoAttackMethod() {
-            if (Time.time > NextFire) {
-                NextFire = Time.time + FireRate;
-
-                Gun.transform.LookAt(Target);
+                gun.transform.LookAt(_Target);
                 //Gun.transform.rotation = Quaternion.LookRotation(Target - Gun.transform.position);
                 
                 //Debug.DrawLine(transform.position, Target, Color.blue);
                 //Quaternion.Slerp(Gun.transform.rotation, Quaternion.LookRotation(Target - Gun.transform.position), NextFire);
 
-                if (Gun.transform.localEulerAngles.x > 0) {
-                    Gun.transform.rotation = Quaternion.Euler(0f, Gun.transform.localEulerAngles.y, 0f);
+                if (gun.transform.localEulerAngles.x > 0) {
+                    gun.transform.rotation = Quaternion.Euler(0f, gun.transform.localEulerAngles.y, 0f);
                 }
-
-                //待修改
-                //Instantiate(Bullet, FireTransform.transform.position, Gun.transform.localRotation);
-                //Instantiate(FireEffect, FireTransform.transform.position, Quaternion.Euler(90.0f, FireTransform.transform.eulerAngles.y, 0.0f));
-            }
-
-        }
-
-        void OnTriggerStay(Collider collider) {
-            if (collider.gameObject.tag == "Enemy") {
-                Target = collider.transform.position;
-                Tar = collider.gameObject;
                 
-                AutoAttackMethod();
+                ObjectPoolManager.Instance.GetGameObject("BulletPlayerPool", transform.TransformPoint(new Vector3(0, 1.88f, 2.96f)), transform.rotation, 0);
+                ObjectPoolManager.Instance.GetGameObject("FireEffectPool", transform.TransformPoint(new Vector3(0, 1.88f, 2.96f)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f), 2);
             }
+
         }
     }
 }

@@ -4,41 +4,32 @@ using UnityEngine;
 
 namespace complete{
     public class EnemyAttack : AutoAttack {
+        
+        private int _AttackDistance;
+        private RaycastHit _Hit;
+        private Ray _Ray;
+        private CapsuleCollider _Collider;
 
-        // public ItemData ItemData;
-        // public GameObject Bullet;
-        // public GameObject FireEffect;
-        // public GameObject FireTransform;
-
-        // private float FireRate;
-        // private float NextFire = 0.0F;
-        private float AttackDistance;
-        private RaycastHit Hit;
-        private Ray Ray;
-        private CapsuleCollider EnemyTankCollider;
-
-        void Start() {
-            AttackDistance = ItemData.EnemyAttackDistance;
-            FireRate = ItemData.EnemyFireRate;
-            EnemyTankCollider = GetComponent<CapsuleCollider>();
+        private void Start() {
+            _AttackDistance = systemData.enemyAttackDistance;
+            _FireRate = systemData.enemyFireRate;
+            _Collider = GetComponent<CapsuleCollider>();
         }
 
-        void Update() {
+        private void Update() {
             AutoAttackMethod();
         }
 
-	    public override void AutoAttackMethod(){
-            Ray = new Ray(transform.position + new Vector3(0f, EnemyTankCollider.center.y, 0f), transform.forward);
-            Debug.DrawRay(Ray.origin, Ray.direction * AttackDistance, Color.red);
+	    protected override void AutoAttackMethod(){
+            _Ray = new Ray(transform.position + new Vector3(0f, _Collider.center.y, 0f), transform.forward);
+            Debug.DrawRay(_Ray.origin, _Ray.direction * _AttackDistance, Color.red);
 
-            if (Physics.Raycast(Ray, out Hit)) {
-                if (Hit.distance < AttackDistance) {
-                    if (Hit.collider.gameObject.tag == "Player") {
+            if (Physics.Raycast(_Ray, out _Hit)) {
+                if (_Hit.distance < _AttackDistance) {
+                    if (_Hit.collider.gameObject.tag == "Player") {
                         
-                        if (Time.time > NextFire) {
-                            NextFire = Time.time + FireRate;
-                            //Instantiate(Bullet, transform.TransformPoint(new Vector3(0, 0.57f, 1.97f)), transform.rotation);
-                            //Instantiate(FireEffect, transform.TransformPoint(new Vector3(0, 0.57f, 1.97f)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f));
+                        if (Time.time > _NextFire) {
+                            _NextFire = Time.time + _FireRate;
                             ObjectPoolManager.Instance.GetGameObject("BulletEnemyPool", transform.TransformPoint(new Vector3(0, 0.57f, 1.97f)), transform.rotation, 0);
                             ObjectPoolManager.Instance.GetGameObject("FireEffectPool", transform.TransformPoint(new Vector3(0, 0.57f, 1.97f)), Quaternion.Euler(90.0f, transform.localEulerAngles.y, 0.0f), 2);
                             ActiveAudio();

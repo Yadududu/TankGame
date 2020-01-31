@@ -2,26 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseBullet : MonoBehaviour {
+public class BaseBullet : MonoBehaviour {
 
-	public ItemData ItemData;
-    //public GameObject Effect;
+	public SystemData systemData;
 
     protected ObjectInfo _ObjectInfo;
-
-    private float _BulletSpeed;
-    private float _Move;
+    protected int _BulletSpeed;
     
-
-	// Use this for initialization
-	void Start () {
-		_BulletSpeed = ItemData.PlayerBulletSpeed;
-        _Move = _BulletSpeed * Time.deltaTime;
+	protected virtual void Start () {
+		_BulletSpeed = systemData.tankBulletSpeed;
         _ObjectInfo = GetComponent<ObjectInfo>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		this.transform.Translate(Vector3.forward * _Move);
+	protected void Update () {
+		transform.Translate(Vector3.forward * _BulletSpeed * Time.deltaTime);
 	}
+    protected virtual void OnCollisionEnter(Collision collision) {
+        
+        _ObjectInfo.RemoveGameObject();
+        ObjectPoolManager.Instance.GetGameObject("BulletBoomEffectPool", transform.position, Quaternion.identity, 1);
+    }
 }

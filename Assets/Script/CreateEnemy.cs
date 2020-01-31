@@ -5,47 +5,42 @@ using UnityEngine;
 namespace complete {
     public class CreateEnemy : MonoBehaviour {
 
-        public ItemData ItemData;
-        //public GameObject EnemyPrefab;
+        public SystemData systemData;
 
-        //private GameObject LookAtPoint;
-        private float _createRate;
-        private float _nextCreate = 0.0F;
-        private float _direction;
-        private List<GameObject> _prefabPool;
-        private int _uplimit = 2;
+        private float _CreateRate;
+        private float _NextCreate;
+        private int _Direction;
+        private List<GameObject> _PrefabPool;
+        private int _Uplimit = 2;
 
         private void Start() {
-            _prefabPool = new List<GameObject>();
-            _createRate = ItemData.EnemyCreateRate;
+            _PrefabPool = new List<GameObject>();
+            _CreateRate = systemData.enemyCreateRate;
+            _Uplimit = systemData.enemyUplimit;
         }
 
         private void Update() {
-            int num = 0;
-            if ((Time.time > _nextCreate) & (_prefabPool.Count < _uplimit)) {
+            if ((Time.time > _NextCreate) & (_PrefabPool.Count < _Uplimit)) {
 
-                _direction = Random.Range(1, 5);
-                _direction = _direction * 90;
+                _Direction = Random.Range(1, 5);
+                _Direction = _Direction * 90;
 
-                _nextCreate = Time.time + _createRate;
-                GameObject _prefabInstance = ObjectPoolManager.Instance.GetGameObject("EnemyPool", transform.position, Quaternion.Euler(0.0f, _direction, 0.0f), 0);
+                _NextCreate = Time.time + _CreateRate;
+                GameObject _prefabInstance = ObjectPoolManager.Instance.GetGameObject("EnemyPool", transform.position, Quaternion.Euler(0.0f, _Direction, 0.0f), 0);
                 _prefabInstance.GetComponent<EnemyHealth>().onDead.AddListener(()=>Remove(_prefabInstance));
-                _prefabPool.Add(_prefabInstance);
+                _PrefabPool.Add(_prefabInstance);
             }
         }
-        //public void SetLookAtPoint(GameObject m_LookAtPoint){
-        //    LookAtPoint = m_LookAtPoint;
-        //}
         private void Remove(GameObject go) {
             go.GetComponent<EnemyHealth>().onDead.RemoveAllListeners();
-            _prefabPool.Remove(go);
+            _PrefabPool.Remove(go);
         }
         private void RemoveAll() {
-            foreach (GameObject o in _prefabPool) {
+            foreach (GameObject o in _PrefabPool) {
                 o.GetComponent<EnemyHealth>().onDead.RemoveAllListeners();
                 o.GetComponent<ObjectInfo>().RemoveGameObject();
             }
-            _prefabPool.Clear();
+            _PrefabPool.Clear();
         }
         private void OnDisable() {
             RemoveAll();

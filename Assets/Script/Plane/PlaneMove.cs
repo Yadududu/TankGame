@@ -2,74 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete{
-	public class PlaneMove : BaseMove {
+namespace complete {
+    public class PlaneMove : BaseMove {
 
-		// public GameObject Effect;
-		public Transform Head;
-		public Transform LeftAirfoil;
-		public Transform RightAirfoil;
-		public Transform LeftTailAirfoil;
-		public Transform RightTailAirfoil;
+        public Transform Head;
+        public Transform LeftAirfoil;
+        public Transform RightAirfoil;
+        public Transform LeftTailAirfoil;
+        public Transform RightTailAirfoil;
 
-		private float UpForce;
-		private float TailUpForce;
-		// private float Speed;
-		private float W_LiftSpeed;
-		private float S_LiftSpeed;
-		private float A_LiftSpeed;
-		private float D_LiftSpeed;
-		private Rigidbody rb;
+        private float _UpForce;
+        private float _TailUpForce;
+        private float _WLiftSpeed;
+        private float _SLiftSpeed;
+        private float _ALiftSpeed;
+        private float _DLiftSpeed;
+        private Rigidbody _Rb;
 
-		// Use this for initialization
-		void Start () {
-			rb = GetComponent<Rigidbody>();
-			UpForce = ItemData.PlaneUpForce;
-			TailUpForce = ItemData.PlaneTailUpForce;
-			Speed = ItemData.PlaneSpeed;
-			W_LiftSpeed = ItemData.Plane_W_LiftSpeed;
-			S_LiftSpeed = ItemData.Plane_S_LiftSpeed;
-			A_LiftSpeed = ItemData.Plane_A_LiftSpeed;
-			D_LiftSpeed = ItemData.Plane_D_LiftSpeed;
-		}
-		
-		// Update is called once per frame
-		void Update () {
-			MoveMethod();
-		}
+        protected override void Start() {
+            _Rb = GetComponent<Rigidbody>();
+            _UpForce = systemData.planeUpForce;
+            _TailUpForce = systemData.planeTailUpForce;
+            Speed = systemData.planeSpeed;
+            _WLiftSpeed = systemData.plane_W_LiftSpeed;
+            _SLiftSpeed = systemData.plane_S_LiftSpeed;
+            _ALiftSpeed = systemData.plane_A_LiftSpeed;
+            _DLiftSpeed = systemData.plane_D_LiftSpeed;
+        }
 
-		public override void MoveMethod(){
-			// transform.Translate(Vector3.forward*Time.deltaTime);
-			rb.AddForceAtPosition(transform.forward*Speed,Head.position);
+        protected override void Update() {
+            MoveMethod();
+        }
 
-			rb.AddForceAtPosition(transform.up*UpForce,LeftAirfoil.position);
-			rb.AddForceAtPosition(transform.up*UpForce,RightAirfoil.position);
+        protected override void MoveMethod() {
+            _Rb.AddForceAtPosition(transform.forward * Speed, Head.position);
 
-			rb.AddForceAtPosition(transform.up*TailUpForce,LeftTailAirfoil.position);
-			rb.AddForceAtPosition(transform.up*TailUpForce,RightTailAirfoil.position);
+            _Rb.AddForceAtPosition(transform.up * _UpForce, LeftAirfoil.position);
+            _Rb.AddForceAtPosition(transform.up * _UpForce, RightAirfoil.position);
 
-			//俯冲
-			if(Input.GetKey(KeyCode.W)){
-				rb.AddForceAtPosition(transform.up*W_LiftSpeed,LeftTailAirfoil.position);
-				rb.AddForceAtPosition(transform.up*W_LiftSpeed,RightTailAirfoil.position);
-			}
-			//爬升
-			else if(Input.GetKey(KeyCode.S)){
-				rb.AddForceAtPosition(transform.up*-S_LiftSpeed,LeftTailAirfoil.position);
-				rb.AddForceAtPosition(transform.up*-S_LiftSpeed,RightTailAirfoil.position);
-			}
-			//左翻滚
-			else if(Input.GetKey(KeyCode.A)){
-				rb.AddForceAtPosition(transform.up*-A_LiftSpeed,LeftTailAirfoil.position);
-				rb.AddForceAtPosition(transform.up*A_LiftSpeed,RightTailAirfoil.position);
-			}
-			//右翻滚
-			else if(Input.GetKey(KeyCode.D)){
-				rb.AddForceAtPosition(transform.up*D_LiftSpeed,LeftTailAirfoil.position);
-				rb.AddForceAtPosition(transform.up*-D_LiftSpeed,RightTailAirfoil.position);
-			}
-		}
-	}
+            _Rb.AddForceAtPosition(transform.up * _TailUpForce, LeftTailAirfoil.position);
+            _Rb.AddForceAtPosition(transform.up * _TailUpForce, RightTailAirfoil.position);
+
+            //俯冲
+            if (Input.GetKey(KeyCode.W)) {
+                _Rb.AddForceAtPosition(transform.up * _WLiftSpeed, LeftTailAirfoil.position);
+                _Rb.AddForceAtPosition(transform.up * _WLiftSpeed, RightTailAirfoil.position);
+            }
+            //爬升
+            else if (Input.GetKey(KeyCode.S)) {
+                _Rb.AddForceAtPosition(transform.up * -_SLiftSpeed, LeftTailAirfoil.position);
+                _Rb.AddForceAtPosition(transform.up * -_SLiftSpeed, RightTailAirfoil.position);
+            }
+            //左翻滚
+            else if (Input.GetKey(KeyCode.A)) {
+                _Rb.AddForceAtPosition(transform.up * -_ALiftSpeed, LeftTailAirfoil.position);
+                _Rb.AddForceAtPosition(transform.up * _ALiftSpeed, RightTailAirfoil.position);
+            }
+            //右翻滚
+            else if (Input.GetKey(KeyCode.D)) {
+                _Rb.AddForceAtPosition(transform.up * _DLiftSpeed, LeftTailAirfoil.position);
+                _Rb.AddForceAtPosition(transform.up * -_DLiftSpeed, RightTailAirfoil.position);
+            }
+        }
+    }
 }
 
 
