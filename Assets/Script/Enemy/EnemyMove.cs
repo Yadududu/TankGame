@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace complete {
+namespace Complete {
     public class EnemyMove : BaseMove {
         
-        protected override void Start() {
+        private void OnEnable() {
             Speed = systemData.enemyMoveSpeed;
         }
         protected override void Update() {
@@ -14,11 +15,11 @@ namespace complete {
         protected override void MoveMethod() {
             transform.Translate(Vector3.forward * Speed * Time.deltaTime);
         }
-        private void OnCollisionEnter() {
+        private void OnCollisionStay() {
             Turn();
         }
         private void Turn() {
-            int num = Random.Range(1, 5);
+            int num = Random.Range(0, 4);
             num = num * 90;
             if (num == transform.localEulerAngles.y) {
                 Turn();

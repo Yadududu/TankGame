@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete{
-	public class TriggerGridCollider : MonoBehaviour {
+namespace Complete {
+    public class TriggerGridCollider : MonoBehaviour {
 
 		public GameObject GridCollider;
 		private void OnTriggerEnter(Collider other) {

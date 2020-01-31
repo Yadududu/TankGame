@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LMJ;
 
-namespace complete{
-	public class PlaneHealth : BaseHealth {
+namespace Complete {
+    public class PlaneHealth : BaseHealth {
         
         public Color fullHealthColor = Color.green;       // 满血状态时的血条颜色
         public Color zeroHealthColor = Color.red;         // 空血的血条状态颜色

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LMJ {
+namespace Complete {
     public class WarningUI : MonoBehaviour {
 
         public static WarningUI Get { get; private set; }

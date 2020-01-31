@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete {
+namespace Complete {
     public class EnemyBullet : BaseBullet {
-        protected override void Start() {
+        private void OnEnable() {
             _BulletSpeed = systemData.enemyBulletSpeed;
-            _ObjectInfo = GetComponent<ObjectInfo>();
         }
     }
 }

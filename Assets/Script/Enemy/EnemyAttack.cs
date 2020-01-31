@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete{
+namespace Complete {
     public class EnemyAttack : AutoAttack {
         
         private int _AttackDistance;
         private RaycastHit _Hit;
         private Ray _Ray;
         private CapsuleCollider _Collider;
-
-        private void Start() {
+        
+        private void OnEnable() {
             _AttackDistance = systemData.enemyAttackDistance;
             _FireRate = systemData.enemyFireRate;
+        }
+        private void Start() {
             _Collider = GetComponent<CapsuleCollider>();
         }
 
@@ -26,7 +28,7 @@ namespace complete{
 
             if (Physics.Raycast(_Ray, out _Hit)) {
                 if (_Hit.distance < _AttackDistance) {
-                    if (_Hit.collider.gameObject.tag == "Player") {
+                    if (_Hit.collider.gameObject.tag == "Player1") {
                         
                         if (Time.time > _NextFire) {
                             _NextFire = Time.time + _FireRate;

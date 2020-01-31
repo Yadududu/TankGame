@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LMJ {
+namespace Complete {
     public enum CameraMode {
         Camera2D,
         Tank,

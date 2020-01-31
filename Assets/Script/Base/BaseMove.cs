@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete {
+namespace Complete {
 	public class BaseMove : MonoBehaviour {
 
 		public SystemData systemData;
-        
-		protected int Speed;
+
+        protected int Speed = 10;
 
         protected virtual void Start() {
-            Speed = 10;
+           
         }
         protected virtual void Update() {
             MoveMethod();

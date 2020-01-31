@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete {
+namespace Complete {
     public class CreateEnemy : MonoBehaviour {
 
         public SystemData systemData;
@@ -13,16 +13,17 @@ namespace complete {
         private List<GameObject> _PrefabPool;
         private int _Uplimit = 2;
 
-        private void Start() {
-            _PrefabPool = new List<GameObject>();
+        private void OnEnable() {
             _CreateRate = systemData.enemyCreateRate;
             _Uplimit = systemData.enemyUplimit;
         }
-
+        private void Start() {
+            _PrefabPool = new List<GameObject>();
+        }
         private void Update() {
             if ((Time.time > _NextCreate) & (_PrefabPool.Count < _Uplimit)) {
 
-                _Direction = Random.Range(1, 5);
+                _Direction = Random.Range(0, 4);
                 _Direction = _Direction * 90;
 
                 _NextCreate = Time.time + _CreateRate;

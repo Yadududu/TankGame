@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace LMJ {
+namespace Complete {
     public class SaveData : MonoBehaviour {
         public int score;
         public List<Commodity> comms = new List<Commodity>();

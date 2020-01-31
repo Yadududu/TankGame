@@ -2,25 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RelativeObj : MonoBehaviour {
+namespace Complete {
+    public class RelativeObj : MonoBehaviour {
 
-    public GameObject[] positive;
-    public GameObject[] negative;
+        public GameObject[] positive;
+        public GameObject[] negative;
 
-    private void OnEnable() {
-        foreach (GameObject obj in positive) {
-            obj.SetActive(true);
+        private void OnEnable() {
+            foreach (GameObject obj in positive) {
+                obj.SetActive(true);
+            }
+            foreach (GameObject obj in negative) {
+                obj.SetActive(false);
+            }
         }
-        foreach (GameObject obj in negative) {
-            obj.SetActive(false);
-        }
-    }
-    private void OnDisable() {
-        foreach (GameObject obj in positive) {
-            obj.SetActive(false);
-        }
-        foreach (GameObject obj in negative) {
-            obj.SetActive(true);
+        private void OnDisable() {
+            foreach (GameObject obj in positive) {
+                obj.SetActive(false);
+            }
+            foreach (GameObject obj in negative) {
+                obj.SetActive(true);
+            }
         }
     }
 }
+

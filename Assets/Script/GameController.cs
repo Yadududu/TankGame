@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using complete;
 using UnityEngine.UI;
 
-namespace LMJ {
+namespace Complete {
 
     public enum State {
         GeneralMode,

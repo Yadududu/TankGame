@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using complete;
 
-namespace LMJ {
+namespace Complete {
     public class Commodity : MonoBehaviour {
         public Image imageHead;
         public Text txtPrice;

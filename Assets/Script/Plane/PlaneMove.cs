@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete {
+namespace Complete {
     public class PlaneMove : BaseMove {
 
         public Transform Head;

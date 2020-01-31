@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete {
+namespace Complete {
 	public class AutoAttack : MonoBehaviour {
 
 		public SystemData systemData;

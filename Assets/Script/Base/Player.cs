@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LMJ {
+namespace Complete {
     public class Player : MonoBehaviour {
         
         private MeshFilter _Mesh;

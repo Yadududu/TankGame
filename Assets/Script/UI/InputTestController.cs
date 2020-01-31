@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace LMJ {
+namespace Complete {
     public class InputTestController : MonoBehaviour {
 
         public static InputTestController Get { get; private set; }

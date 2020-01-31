@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete {
+namespace Complete {
     public class TurretAttack : BaseAttack {
 
         protected override void AttackControl(bool doubleBullet) {

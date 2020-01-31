@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using LMJ;
 
-namespace complete {
+namespace Complete {
     public class TankBullet : BaseBullet {
-        
+
+        private void OnEnable() {
+            _BulletSpeed = systemData.tankBulletSpeed;
+        }
         protected override void OnCollisionEnter(Collision collision) {
             
             string s = collision.gameObject.tag;

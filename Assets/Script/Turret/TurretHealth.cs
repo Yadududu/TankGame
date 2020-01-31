@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using LMJ;
 
-namespace complete {
+namespace Complete {
     public class TurretHealth : BaseHealth {
          
         public Color fullHealthColor = Color.green;       // 满血状态时的血条颜色

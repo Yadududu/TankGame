@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LMJ {
+namespace Complete {
     //使用XML保存游戏信息
     public class XMLSave : SaveData {
 

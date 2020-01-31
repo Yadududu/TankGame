@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletBoomEffectPool : ObjectPool {
-    public override GameObject Get(Vector3 pos, Quaternion rot, float lifetime) {
-        GameObject obj;
-        obj = base.Get(pos, rot, lifetime);
+namespace Complete {
+    public class BulletBoomEffectPool : ObjectPool {
+        public override GameObject Get(Vector3 pos, Quaternion rot, float lifetime) {
+            GameObject obj;
+            obj = base.Get(pos, rot, lifetime);
 
-        return obj;
+            return obj;
+        }
     }
 }
+

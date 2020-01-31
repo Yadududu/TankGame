@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-namespace LMJ {
+namespace Complete {
     public class ScoreSystem : MonoBehaviour {
         public static ScoreSystem Get { get; private set; }
 

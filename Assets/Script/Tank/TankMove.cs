@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace complete {
+namespace Complete {
     public class TankMove : BaseMove {
         
         private const int _UP = 0;

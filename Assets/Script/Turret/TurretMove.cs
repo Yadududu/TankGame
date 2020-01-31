@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete {
-	public class TurretMove : BaseMove {
+namespace Complete {
+    public class TurretMove : BaseMove {
         
 		protected override void Start () {
 			Speed = systemData.turretSpeed;

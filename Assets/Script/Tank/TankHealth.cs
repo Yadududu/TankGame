@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using LMJ;
 
-namespace complete {
+namespace Complete {
     public class TankHealth : BaseHealth {
 
         public Slider sliderSelf;

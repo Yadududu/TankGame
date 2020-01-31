@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace LMJ {
+namespace Complete {
     //读取商品信息,实例化到商店
     public class ReadXmlData : MonoBehaviour {
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace complete{
+namespace Complete {
 	public class BaseHealth : MonoBehaviour {
 
         public SystemData systemData;

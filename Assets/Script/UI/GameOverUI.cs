@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LMJ {
+namespace Complete {
     public class GameOverUI : MonoBehaviour {
         public static GameOverUI Get{ get; private set; }
 

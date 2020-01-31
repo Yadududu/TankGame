@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace complete{
+namespace Complete {
     public class EnemyHealth : BaseHealth {
         
-        protected override void Start() {
-            base.Start();
+        private void OnEnable() {
             _HealthValue = systemData.enemyHealthValue;
             _CurrentHealth = _HealthValue;
         }
