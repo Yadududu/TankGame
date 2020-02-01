@@ -22,23 +22,33 @@ namespace Complete {
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.Return)) {
-                if (inputUI.activeInHierarchy) {
-                    inputUI.SetActive(false);
-                    _Str = _Input.text;
-                    _Input.text = "";
-                    Orider(_Str);
-                    Debug.Log(_Str);
-                } else {
-                    inputUI.SetActive(true);
-                    EventSystem.current.SetSelectedGameObject(inputUI);
-                }
+                Enter();
+            }
+        }
+        public void Enter() {
+            if (inputUI.activeInHierarchy) {
+                inputUI.SetActive(false);
+                _Str = _Input.text;
+                _Input.text = "";
+                Orider(_Str);
+                Debug.Log(_Str);
+            } else {
+                inputUI.SetActive(true);
+                EventSystem.current.SetSelectedGameObject(inputUI);
             }
         }
         private void Orider(string str) {
             if (str == "GiveMeScore") {
                 ScoreSystem.Get.Add(300);
             }
+            if (str == "AutoAttack") {
+                if(GameController.Get._State == State.TurretMode)
+                    TurretAutoAttack.Get.enabled = true;
+            }
+            if (str == "CancelAutoAttack") {
+                TurretAutoAttack.Get.enabled = false;
+            }
         }
     }
 }
-    
+

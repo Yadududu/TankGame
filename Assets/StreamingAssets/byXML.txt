@@ -1,5 +1,5 @@
 <root name="saveFile">
-  <score>4</score>
+  <score>104</score>
   <setting>1</setting>
   <commodity>
     <name>tank2_1</name>
@@ -128,7 +128,7 @@
   </commodity>
   <commodity>
     <name>plane_6</name>
-    <buyBtn>0</buyBtn>
+    <buyBtn>1</buyBtn>
     <selectBtn>0</selectBtn>
   </commodity>
   <commodity>

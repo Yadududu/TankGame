@@ -30,7 +30,7 @@ namespace Complete {
         private Transform _EnemyLifeSpot1;
         private Transform _EnemyLifeSpot2;
         private GameObject _PlayerInstance;
-        private State _State = State.GeneralMode;
+        public State _State { get; private set; }
         private CameraController _CameraController;
         private GameObject _Mesh;
         private Material _Material;
@@ -41,6 +41,7 @@ namespace Complete {
 
         private GameController() {
             Get = this;
+            _State = State.GeneralMode;
         }
         private void Start() {
             _CameraController = Camera.main.GetComponent<CameraController>();
