@@ -18,7 +18,7 @@ namespace Complete {
         [HideInInspector]
         public bool selectKeyDownSign;
         [HideInInspector]
-        public Mesh mesh;
+        public GameObject mesh;
         [HideInInspector]
         public Material material;
         [HideInInspector]

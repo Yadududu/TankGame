@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 namespace Complete {
     public class Player : MonoBehaviour {
-        
+
+        public MeshFilter[] children;
+
         private MeshFilter _Mesh;
         private MeshRenderer _MeshRenderer;
 
@@ -14,10 +16,16 @@ namespace Complete {
             _MeshRenderer = GetComponent<MeshRenderer>();
         }
 
-        public void ChangeModel(Mesh setMesh, Material setMeterial) {
-            _Mesh.mesh = setMesh;
+        public void ChangeModel(GameObject setMesh, Material setMeterial) {
+            _Mesh.mesh = setMesh.GetComponent<MeshFilter>().sharedMesh;
             _MeshRenderer.material = setMeterial;
         }
+        public void ChangeModelChildren(GameObject setMesh, Material setMeterial) {
+            MeshFilter[] mf = setMesh.GetComponentsInChildren<MeshFilter>();
+            for (int i=0;i< mf.Length;i++) {
+                children[i].mesh = mf[i].sharedMesh;
+                children[i].GetComponent<MeshRenderer>().material = setMeterial;
+            }
+        }
     }
-
 }

@@ -33,6 +33,7 @@
     <Plane name ="plane_9" price="500" bullet="1" image="Image\Plane\9" model ="Models\Plane\9\Plane9" material="Models\Plane\9\Materials\StarSparrow_Purple"></Plane>
   </Planes>
   <Turrets>
-    <Turret name ="turret_1" price="600" bullet="1" image="Image\Turret\1" model ="Models\Tank\1_1\Tank" material="Models\Tank\1_1\Materials\Tank"></Turret>
+    <Turret name ="turret_1" price="600" bullet="1" image="Image\Turret\1" model ="Models\Turret\1\Turret1" material="Models\Turret\1\Materials\pbr_turret1"></Turret>
+    <Turret name ="turret_2" price="600" bullet="1" image="Image\Turret\2" model ="Models\Turret\1\Turret1" material="Models\Turret\1\Materials\pbr_turret2"></Turret>
   </Turrets>
 </Commodity>

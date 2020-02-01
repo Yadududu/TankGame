@@ -44,7 +44,7 @@ namespace Complete {
                 _Comm = _InstancePerfab.GetComponent<Commodity>();
                 _Comm.imageHead.sprite = Resources.Load(_DataList[i].image, typeof(Sprite)) as Sprite;
                 _Comm.txtPrice.text = _DataList[i].price;
-                _Comm.mesh = Resources.Load(_DataList[i].mesh, typeof(Mesh)) as Mesh;
+                _Comm.mesh = Resources.Load(_DataList[i].mesh, typeof(GameObject)) as GameObject;
                 _Comm.material = Resources.Load(_DataList[i].material, typeof(Material)) as Material;
                 _Comm.doubleBullet = _DataList[i].bullet == "2" ? true : false;
                 _Comm.modeName = _DataList[i].name;

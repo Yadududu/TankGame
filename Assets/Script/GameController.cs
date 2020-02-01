@@ -32,7 +32,7 @@ namespace Complete {
         private GameObject _PlayerInstance;
         private State _State = State.GeneralMode;
         private CameraController _CameraController;
-        private Mesh _Mesh;
+        private GameObject _Mesh;
         private Material _Material;
         private Commodity _Comm;
         private Commodity _LastComm;
@@ -81,6 +81,7 @@ namespace Complete {
             _State = State.TurretMode;
             _PlayerInstance = ObjectPoolManager.Instance.GetGameObject("TurretPool", new Vector3(91.6f, 0.03f, 88.2f), Quaternion.identity, 0);
             Play();
+            _PlayerInstance.GetComponent<Player>().ChangeModelChildren(_Mesh, _Material);
             _CameraController.SetCameraMode(CameraMode.Turret, _PlayerInstance);
         }
         private void Play() {
@@ -114,7 +115,7 @@ namespace Complete {
             _AudioSource.clip = menuMusic;
             _AudioSource.Play();
         }
-        public void ChangePlayerModel(Mesh setMesh, Material setMeterial,bool doubleBullet, Commodity comm) {
+        public void ChangePlayerModel(GameObject setMesh, Material setMeterial,bool doubleBullet, Commodity comm) {
             _Mesh = setMesh;
             _Material = setMeterial;
             _DoubleBullet = doubleBullet;

@@ -89,7 +89,7 @@
   <commodity>
     <name>tank5_3</name>
     <buyBtn>1</buyBtn>
-    <selectBtn>1</selectBtn>
+    <selectBtn>0</selectBtn>
   </commodity>
   <commodity>
     <name>tank5_4</name>
@@ -148,7 +148,12 @@
   </commodity>
   <commodity>
     <name>turret_1</name>
-    <buyBtn>0</buyBtn>
+    <buyBtn>1</buyBtn>
     <selectBtn>0</selectBtn>
+  </commodity>
+  <commodity>
+    <name>turret_2</name>
+    <buyBtn>1</buyBtn>
+    <selectBtn>1</selectBtn>
   </commodity>
 </root>

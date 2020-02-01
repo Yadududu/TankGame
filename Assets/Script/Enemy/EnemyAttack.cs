@@ -28,7 +28,7 @@ namespace Complete {
 
             if (Physics.Raycast(_Ray, out _Hit)) {
                 if (_Hit.distance < _AttackDistance) {
-                    if (_Hit.collider.gameObject.tag == "Player1") {
+                    if (_Hit.collider.gameObject.tag == "Player") {
                         
                         if (Time.time > _NextFire) {
                             _NextFire = Time.time + _FireRate;
