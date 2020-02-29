@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Test : MonoBehaviour {
-    
+
+    public float mun;
+
     void Start() {
 
     }
@@ -23,5 +25,7 @@ public class Test : MonoBehaviour {
         foreach (RaycastHit h in hits) {
             Debug.Log(h.collider.name);
         }
+
+        Debug.Log(Mathf.Clamp(mun, -10, 45));
     }
 }

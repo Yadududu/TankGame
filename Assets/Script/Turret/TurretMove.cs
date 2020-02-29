@@ -10,7 +10,7 @@ namespace Complete {
 		}
 		protected override void Update () {
 			MoveMethod();
-		}
+        }
 
 		protected override void MoveMethod(){
 			
@@ -24,14 +24,15 @@ namespace Complete {
 			}
 			else{
                 Camera.main.transform.eulerAngles += new Vector3(-mouseY, 0, 0);//摄像机绕x轴旋转的方向跟鼠标y移动方向相反
-				// Debug.Log(Camera3D.transform.eulerAngles.x);
-				if(Camera.main.transform.eulerAngles.x <= 350 & Camera.main.transform.eulerAngles.x > 180){
-                    Camera.main.transform.rotation = Quaternion.Euler(new Vector3(-10, Camera.main.transform.eulerAngles.y,0));
-				}
-				if(Camera.main.transform.eulerAngles.x >= 45 & Camera.main.transform.eulerAngles.x <= 180){
-                    Camera.main.transform.rotation = Quaternion.Euler(new Vector3(45, Camera.main.transform.eulerAngles.y,0));
-				}
-			}
+                // Debug.Log(Camera3D.transform.eulerAngles.x);
+                if (Camera.main.transform.eulerAngles.x <= 350 & Camera.main.transform.eulerAngles.x > 180) {
+                    Camera.main.transform.rotation = Quaternion.Euler(new Vector3(-10, Camera.main.transform.eulerAngles.y, 0));
+                }
+                if (Camera.main.transform.eulerAngles.x >= 45 & Camera.main.transform.eulerAngles.x <= 180) {
+                    Camera.main.transform.rotation = Quaternion.Euler(new Vector3(45, Camera.main.transform.eulerAngles.y, 0));
+                }
+                //Camera.main.transform.eulerAngles =new Vector3(Mathf.Clamp(Camera.main.transform.eulerAngles.x, 10, 45), Camera.main.transform.eulerAngles.y,0);
+            }
 		}
 	}
 }
